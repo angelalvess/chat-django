@@ -1,0 +1,16 @@
+<ul class="unique-message-container list-group list-group-flush">
+
+    {% if not object %}
+        <p>Not rooms yet</p>
+    {% else %}
+        {% if object.messages.count > 0 %}
+            {% for message in object.messages.all %}
+           {% include 'chat/message.html' %}
+            {% endfor %}
+            
+        {% else %}
+                <p>Not messages yet...</p>
+        {% endif %}
+
+    {% endif %}
+</ul>

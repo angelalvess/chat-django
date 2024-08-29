@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock css %}
+    
 
 
 {% block content %}
@@ -12,11 +18,7 @@
                 </div>
 
                 <ul class="list-rooms list-group shadow border-0">
-                    
-                    {% for room in rooms  %}
-                        <li class='list-group-item'>{{room.title}}</li>
-                    {% endfor %}
-                        
+                   {% include 'chat/list-rooms.html' %}   
                 </ul>
             </div>
         </div>
@@ -26,12 +28,12 @@
 
             <!-- Lista de mensagens -->
             <div class="messages card m-3 p-3 h-75 shadow border-0 overflow-scroll">
-                
+               {% include 'chat/list-messages.html' %}
             </div>
 
             <!-- Input -->
             <div class="card m-3 shadow border-0">
-                
+                {% include 'chat/send-message.html' %}
             </div>
         </div>
     </div>
@@ -39,3 +41,8 @@
     
 {% endblock %}
 
+
+{% block js %}
+    <script src="{% static 'js/chat.js' %}"></script>
+{% endblock js %}
+    
