@@ -15,6 +15,9 @@
                 <div class="d-flex justify-content-between">
                     <h3>chat<span class="text-primary">us</span></h3>
                     <button type="button" class="btn btn-transparent mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle-fill text-primary"></i></button>
+                
+                        
+                    
                 </div>
 
                 <ul class="list-rooms list-group shadow border-0">
@@ -38,7 +41,7 @@
         </div>
     </div>
 
-    
+        {% include 'chat/modal/create-room.html' %}
 {% endblock %}
 
 

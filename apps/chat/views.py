@@ -9,7 +9,7 @@ import json
 
 
 def home(request):
-    rooms = Room.objects.all()
+    rooms = Room.objects.all().order_by("-created_at")
 
     return render(request, "chat/home.html", {"rooms": rooms})
 
@@ -24,7 +24,7 @@ def send_message(request, pk):
     room = Room.objects.get(id=pk)
 
     new_message = Message.objects.create(user=request.user, text=data["message"])
-    room.messages.add()
+    room.messages.add(new_message)
     return render(
         request,
         "chat/message.html",
@@ -32,3 +32,9 @@ def send_message(request, pk):
             "message": new_message,
         },
     )
+
+
+def create_room(request):
+    data = json.loads(request.body)
+    room = Room.objects.create(user=request.user, title=data["title"])
+    return render(request, "chat/room.html", {"room": room})

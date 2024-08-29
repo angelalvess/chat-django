@@ -1,5 +1,5 @@
 
 {% for room in rooms  %}
-        <li role="button" class="list-group-item" id='room-{{room.id}}' onclick="getMessages('{{room.id}}')">{{room.title}}</li>
+        {% include 'chat/room.html' %}
 {% endfor %}
     
